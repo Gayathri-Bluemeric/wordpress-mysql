@@ -36,6 +36,8 @@ data:
 apiVersion: apps/v1 # for k8s versions before 1.9.0 use apps/v1beta2  and before 1.8.0 use extensions/v1beta1
 kind: Deployment
 metadata:
+  annotations:
+    imageregistry: "https://hub.docker.com/"
   name: wordpress-mysql
   labels:
     app: wordpress
@@ -48,8 +50,6 @@ spec:
     type: Recreate
   template:
     metadata:
-      annotations:
-        imageregistry: "https://hub.docker.com/"
       labels:
         app: wordpress
         tier: mysql
